@@ -14,7 +14,89 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      applications: {
+        Row: {
+          company: string
+          created_at: string
+          date_applied: string
+          id: string
+          location: string | null
+          notes: string | null
+          position: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          company: string
+          created_at?: string
+          date_applied?: string
+          id?: string
+          location?: string | null
+          notes?: string | null
+          position: string
+          status: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          company?: string
+          created_at?: string
+          date_applied?: string
+          id?: string
+          location?: string | null
+          notes?: string | null
+          position?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "applications_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          full_name: string | null
+          graduation_year: number | null
+          id: string
+          major: string | null
+          phone: string | null
+          university: string | null
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string | null
+          graduation_year?: number | null
+          id: string
+          major?: string | null
+          phone?: string | null
+          university?: string | null
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string | null
+          graduation_year?: number | null
+          id?: string
+          major?: string | null
+          phone?: string | null
+          university?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
